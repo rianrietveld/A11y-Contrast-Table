@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>A11y Contrast Table</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<header>
+    <h1>A11y Contrast Table</h1>
+</header>
+<main>
+    <section class="act-settings">
+        <h2>Settings</h2>
+        <p>Test foreground and background colour combinations for compliance with WCAG 2.1 AA minimum contrast ratio.</p>
+        <p>Include one colour per line, with an optional comma-separated label.</p>
+
+        <form class="act-settings__form">
+
+            <div class="act-settings__data_wrapper">
+                <label for="act-settings-background-colors">Background colour</label>
+                <textarea id="act-settings-background-colors" class="act-color-textarea" name="background-colors" autocomplete="off" placeholder="Enter HEX color values, one color per line">
+#ffffff
+#ffa500
+#e59400
+#cc8400
+#000000</textarea>
+            </div>
+
+            <div class="act-settings__data_wrapper">
+                <label for="act-settings-foreground-colors">Foreground colours</label>
+                <textarea id="act-settings-foreground-colors"  class="act-color-textarea" name="foreground-colors" autocomplete="off" placeholder="Enter HEX color values, one color per line">
+#ffffff
+#ffa500
+#e59400
+#cc8400
+#000000</textarea>
+            </div>
+
+            <button id="show_table" type="button">Calculate table</button>
+
+        </form>
+
+    </section>
+
+    <section class="act-output">
+
+        <h2>Output</h2>
+
+        <table>
+            <caption>Calculations colour contrast ratio</caption>
+            <tr class="header"></tr>
+        </table>
+
+        <h3>Table legend</h3>
+
+        <dl>
+            <dt>Pass</dt>
+            <dd>Passes for WCAG 2.1 AA.</dd>
+            <dt>LB</dt>
+            <dd>Passes only for large text (24 pixels and up) or bold text (19 pixels and up).</dd>
+            <dt>Fail</dt>
+            <dd>Doesn't pass for WCAG 2.1 AA.</dd>
+        </dl>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Inspired by <a href="https://contrast-grid.eightshapes.com">Contrast Grid by Eightshapes</a>. Refactored and modified by <a href="https://rianrietveld.com">Rian Rietveld</a>.</p>
+</footer>
+
+</body>
+</html>

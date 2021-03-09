@@ -1,0 +1,140 @@
+
+ // Vars:
+ $text: #333333;
+ $background: #f8f8f8;
+ $background: #f8f8f8;
+ $accent: #008080;
+ $accent-text: #ffffff;
+ $accent-inv: #0f3054;
+ $fail: #cc0000;
+ $lb: #ffa500;
+
+ // CSS:
+
+ body {
+	 color:  $text;
+	 background-color: $background;
+	 font-family: sans-serif;
+	 font-weight: normal;
+	 line-height: 1.25;
+ }
+
+ header,
+ footer {
+	 color:  $accent-text;
+	 background-color: $accent;
+	 padding: 1em 2em;
+
+	 a {
+		 color:  $accent-text;
+		 background-color: $accent;
+
+		 &:hover,
+		 &:focus  {
+			 text-decoration: none;
+		 }
+	 }
+ }
+
+ main {
+	 align-items: stretch;
+	 display: flex;
+	 max-width: 100vw;
+	 min-height: 100vh;
+ }
+
+ .act-settings {
+
+	 border-right:  $accent 2px solid;
+	 flex: 0 0 16em;
+	 padding: 0 1em;
+
+	 label {
+		 display: block;
+		 font-weight: 400;
+	 }
+	 textarea {
+		 min-height: 10em;
+		 padding: 0.5em;
+		 width: 15em;
+	 }
+ }
+
+ .act-output {
+	 padding-left: 1em;
+
+ }
+
+
+ h1 {
+	 font-size: 2em;
+ }
+ h2 {
+	 font-size: 1.25em;
+ }
+
+ button {
+	 color:  $accent-text;
+	 background-color: $accent;
+	 border: 0;
+	 border-radius: 0.5em;
+	 cursor: pointer;
+	 display: inline-flex;
+	 font-size: 1.2em;
+	 padding: 1em;
+	 text-align: center;
+	 margin: 1em 0;
+	 width: 11em;
+
+	 &:hover,
+	 &:focus  {
+		 background-color: $accent-inv;
+	 }
+ }
+
+
+ dl {
+	 display: grid;
+	 grid-template-columns: 2em auto;
+ }
+
+ dt {
+	 grid-column: 1;
+
+ }
+
+
+
+table {
+
+	border-collapse: collapse;
+
+	caption {
+		font-size: 1.2em;
+		font-weight: 700;
+		text-align: left;
+	}
+
+	td,
+	th {
+		padding: 0.5em;
+		border: solid 1px $accent;
+		min-width: 5em;
+		min-height: 5em;
+	}
+
+	th {
+		font-weight: 300;
+		text-align: left;
+		text-transform: lowercase;
+	}
+
+	td {
+		div {
+			padding: 0.2em;
+			color: $text;
+			background-color: $background;
+		}
+	}
+
+}
