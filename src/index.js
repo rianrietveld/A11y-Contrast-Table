@@ -3,11 +3,9 @@ import './styles/style.scss';
 $(document).ready( function() {
     act_table_data();
     $( "#show_table" ).on( "click", act_table_data );
-
 } );
 
 function act_table_data() {
-
     let rows = [];
     let row  = 0;
 
@@ -36,7 +34,6 @@ function act_table_data() {
 }
 
 function act_table_write(rows, background_colours_data, foreground_colours_data) {
-
     $( "tr" ).remove();
     $( "caption" ).after( '<tr class="header"></tr>' );
 
@@ -56,10 +53,11 @@ function act_table_write(rows, background_colours_data, foreground_colours_data)
         $this.addClass(newClass);
     });
 
-    let current_row = 0;
-    let row_class   = '.row-0';
-    let new_colour  = 0;
-    let style       = "";
+    let current_row        = 0;
+    let row_class          = '.row-0';
+    let new_colour         = 0;
+    let style              = "";
+    let contrast_container = "";
 
     rows.forEach( ( colour ) => {
 
@@ -70,15 +68,20 @@ function act_table_write(rows, background_colours_data, foreground_colours_data)
             row_class   = '.row-' + current_row;
         }
 
+        if ( colour[1][1] !== colour[1][0] ) {
+            contrast_container = '<div>' +  colour[1][2] + colour[1][3] + '</div>';
+        } else {
+            contrast_container = "";
+        }
+
+
         style = ' style="color:' + colour[1][1] + '; background-color:' + colour[1][0] + ';"';
-        $( row_class ).append( '<td' + style + '>Text<br /><div>' +  colour[1][2] + colour[1][3] + '</div></td>');
+        $( row_class ).append( '<td' + style + '><span>Text</span>' + contrast_container + '</td>');
 
     });
-
 }
 
 function cleanup_colour_data( raw_data ) {
-
     let raw_data_array = raw_data.val().split(/\r?\n/);
     let data =[];
 
@@ -89,12 +92,10 @@ function cleanup_colour_data( raw_data ) {
 
         if ( ( hexcode.length === 7 ) && ( hexcode[0] === "#" ) ) {
 
-          if (value[1] === undefined) {
+            if (value[1] === undefined) {
                 value[1] = '';
             }
             value[0] = value[0].toUpperCase();
-          console.table(value)
-
             data.push( value );
 
         }
@@ -106,13 +107,13 @@ function cleanup_colour_data( raw_data ) {
 
 
 function act_get_label( ratio ) {
-    let label = ': Pass';
+
     if ( ratio < 3 ) {
-        label = ': Fail';
+        return ': Fail';
     } else if ( ratio < 4.5 ) {
-        label = ': LB';
+        return ': LB';
     }
-    return label;
+    return ': Pass';
 }
 
 // MIT Licensed function courtesy of Lea Verou
@@ -210,17 +211,16 @@ function getContrastRatio(lumA, lumB) {
     }
 
     ratio = (lighter + 0.05) / (darker + 0.05);
-
     return Math.round(ratio, 1);
 }
 
 function act_calc_contrast(foregroundColor, backgroundColor) {
     let color1 = getRGBFromHex(foregroundColor),
         color2 = getRGBFromHex(backgroundColor),
-        l1RGB = calculateLRGB(color1),
-        l2RGB = calculateLRGB(color2),
-        l1    = calculateLuminance(l1RGB),
-        l2    = calculateLuminance(l2RGB);
+        l1RGB  = calculateLRGB(color1),
+        l2RGB  = calculateLRGB(color2),
+        l1     = calculateLuminance(l1RGB),
+        l2     = calculateLuminance(l2RGB);
 
     return getContrastRatio(l1, l2);
 }

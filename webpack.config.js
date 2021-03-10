@@ -4,8 +4,6 @@ module.exports = {
     mode: 'production',
     entry: [
         './src/index.js',
-        //'./src/components/color_form.js',
-        //'./src/components/contrast_grid.js',
         './src/styles/style.scss'
     ],
     output: {
