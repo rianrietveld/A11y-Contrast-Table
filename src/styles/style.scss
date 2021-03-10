@@ -44,8 +44,7 @@
  }
 
  .act-settings {
-
-	 border-right:  $accent 2px solid;
+	 border-right: $accent 2px solid;
 	 flex: 0 0 16em;
 	 padding: 0 1em;
 
@@ -54,7 +53,7 @@
 		 font-weight: 400;
 	 }
 	 textarea {
-		 min-height: 10em;
+		 min-height: 6em;
 		 padding: 0.5em;
 		 width: 15em;
 	 }
@@ -62,7 +61,6 @@
 
  .act-output {
 	 padding-left: 1em;
-
  }
 
 
@@ -100,13 +98,11 @@
 
  dt {
 	 grid-column: 1;
-
  }
 
 
 
 table {
-
 	border-collapse: collapse;
 
 	caption {
@@ -136,5 +132,4 @@ table {
 			background-color: $background;
 		}
 	}
-
 }
